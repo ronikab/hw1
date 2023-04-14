@@ -1,8 +1,72 @@
-DROP TABLE IF EXISTS movies;
+drop table if exists movies;
+create table movies (
+movie_id INTEGER PRIMARY KEY AUTOINCREMENT,
+movie_title text,
+release_yr integer,
+mpaa_rating text,
+studio_id integer
+);
+
+drop table if exists studios;
+create table studios (
+studio_id integer primary key AUTOINCREMENT,
+studio_name text
+);
+
+drop table if exists actor_roles;
+create table actor_roles (
+actor_id integer primary key AUTOINCREMENT,
+first_name text, 
+last_name text,
+character_name text, 
+movie_id integer
+);	
 
 
+INSERT into movies (
+movie_title, 
+release_yr, 
+mpaa_rating, 
+studio_id
+)
 
+values 
+("Batman Begins", 2005, "PG-13", 1),
+("The Dark Knight", 2008, "PG-13", 1),
+("The Dark Knight Rises", 2012, "PG-13", 1)
+;
 
+insert into studios (
+studio_name, 
+movie_id
+)
+values 
+("Warner Bros.")
+;
+
+Insert into actor_roles (
+first_name, 
+last_name,
+character_name,
+movie_id
+)
+values
+(1, 'Christian', 'Bale', 'Bruce Wayne'),
+(1, 'Michael', 'Caine', 'Alfred'),
+(1, 'Liam', 'Neeson', 'Ras Al Ghul'),
+(1, 'Katie', 'Holmes', 'Rachel Dawes'),
+(1, 'Gary', 'Oldman', 'Commissioner Gordon'),
+(2, 'Knight', 'Christian', 'Bruce Wayne'),
+(2, 'Knight', 'Heath', 'Joker'),
+(2, 'Knight', 'Aaron', 'Harvey Dent'),
+(2, 'Knight', 'Michael', 'Alfred'),
+(2, 'Knight', 'Maggie', 'Rachel Dawes'),
+(3, 'Knight', 'Rises', 'Bruce Wayne'),
+(3, 'Knight', 'Rises', 'Commissioner Gordon'),
+(3, 'Knight', 'Rises', 'Bane'),
+(3, 'Knight', 'Rises', 'John Blake'),
+(3, 'Knight', 'Rises', 'Selina Kyle')
+;
 
 
 -- In this assignment, you'll be building the domain model, database 
