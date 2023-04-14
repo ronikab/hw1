@@ -16,8 +16,7 @@ studio_name text
 drop table if exists actor_roles;
 create table actor_roles (
 actor_id integer primary key AUTOINCREMENT,
-first_name text, 
-last_name text,
+actor_name text, 
 character_name text, 
 movie_id integer
 );	
@@ -37,37 +36,55 @@ values
 ;
 
 insert into studios (
-studio_name, 
-movie_id
+studio_name
 )
 values 
 ("Warner Bros.")
 ;
 
 Insert into actor_roles (
-first_name, 
-last_name,
+actor_name, 
 character_name,
 movie_id
 )
 values
-(1, 'Christian', 'Bale', 'Bruce Wayne'),
-(1, 'Michael', 'Caine', 'Alfred'),
-(1, 'Liam', 'Neeson', 'Ras Al Ghul'),
-(1, 'Katie', 'Holmes', 'Rachel Dawes'),
-(1, 'Gary', 'Oldman', 'Commissioner Gordon'),
-(2, 'Knight', 'Christian', 'Bruce Wayne'),
-(2, 'Knight', 'Heath', 'Joker'),
-(2, 'Knight', 'Aaron', 'Harvey Dent'),
-(2, 'Knight', 'Michael', 'Alfred'),
-(2, 'Knight', 'Maggie', 'Rachel Dawes'),
-(3, 'Knight', 'Rises', 'Bruce Wayne'),
-(3, 'Knight', 'Rises', 'Commissioner Gordon'),
-(3, 'Knight', 'Rises', 'Bane'),
-(3, 'Knight', 'Rises', 'John Blake'),
-(3, 'Knight', 'Rises', 'Selina Kyle')
+('Christian Bale', 'Bruce Wayne', 1),
+('Michael Caine', 'Alfred', 1),
+('Liam Neeson', "Ra's Al Ghul", 1),
+('Katie Holmes', 'Rachel Dawes', 1),
+('Gary Oldman', 'Commissioner Gordon', 1),
+('Christian Bale', 'Bruce Wayne', 2),
+('Heath Ledger', 'Joker', 2),
+('Aaron Eckhart', 'Harvey Dent', 2),
+('Michael Caine', 'Alfred', 2),
+('Maggie Gyllenhaal', 'Rachel Dawes', 2),
+('Christian Bale', 'Bruce Wayne', 3),
+('Gary Oldman', 'Commissioner Gordon', 3),
+('Tom Hardy', 'Bane', 3),
+('Joseph Gordon-Levitt', 'John Blake', 3),
+('Anne Hathaway', 'Selina Kyle', 3)
 ;
 
+
+.mode column
+.headers off
+
+.print "Movies"
+.print "======"
+.print ""
+
+select movie_title, release_yr, mpaa_rating, studio_name
+from movies a
+inner join studios b on a.studio_id=b.studio_id;
+
+.print ""
+.print "Top Cast"
+.print "========"
+.print ""
+
+select movie_title, actor_name, character_name
+from movies a
+inner join actor_roles b on a.movie_id=b.movie_id;
 
 -- In this assignment, you'll be building the domain model, database 
 -- structure, and data for "KMDB" (the Kellogg Movie Database).
@@ -171,8 +188,8 @@ values
 -- The Dark Knight Rises  Anne Hathaway         Selina Kyle
 
 -- Turns column mode on but headers off
-.mode column
-.headers off
+-- .mode column
+-- .headers off
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
@@ -185,18 +202,18 @@ values
 -- TODO!
 
 -- Prints a header for the movies output
-.print "Movies"
-.print "======"
-.print ""
+-- .print "Movies"
+-- .print "======"
+-- .print ""
 
 -- The SQL statement for the movies output
 -- TODO!
 
 -- Prints a header for the cast output
-.print ""
-.print "Top Cast"
-.print "========"
-.print ""
+-- .print ""
+-- .print "Top Cast"
+-- .print "========"
+-- .print ""
 
 
 -- The SQL statement for the cast output
