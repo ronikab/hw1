@@ -1,3 +1,10 @@
+DROP TABLE IF EXISTS movies;
+
+
+
+
+
+
 -- In this assignment, you'll be building the domain model, database 
 -- structure, and data for "KMDB" (the Kellogg Movie Database).
 -- The end product will be a report that prints the movies and the 
